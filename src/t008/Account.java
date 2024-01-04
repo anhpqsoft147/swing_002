@@ -11,6 +11,8 @@ public class Account {
     private double sttk3;
 
     private double hsls = 0.035;
+    private double hsls1 = 0.0125;
+    private double hsls2 = 0.125;
 
     public Account() {
     }
