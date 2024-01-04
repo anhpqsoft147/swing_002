@@ -7,6 +7,8 @@ public class Account {
     private String ttk;
 
     private double sttk;
+    private double sttk2;
+    private double sttk3;
 
     private double hsls = 0.035;
 
