@@ -5,6 +5,8 @@ import t011.listener.CustomMouseListener;
 import t011.listener.CustomWindowListener;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -33,106 +35,61 @@ public class Form {
                 System.out.println("b");
             }
         });
-//        JButton button1 = new JButton("Phep cong");
-//        // buttonCal.setText("Handle: " + count);
-//
-//        button1.setBounds(50,350, 100, 50);
-//        frame1.add(button1);
-//
-//        JButton button2 = new JButton("Phep tru");
-//        button2.setBounds(170,350, 100, 50);
-//        frame1.add(button2);
-//
-        JLabel jLabel = new JLabel();
-        jLabel.setText("Ket qua thuc hien: ");
 
-//        jLabel.setBounds(0, 410, 320, 20);
-//        // jLabel.setHorizontalAlignment(SwingConstants.CENTER);
-//        frame1.add(jLabel);
-//
-//        JTextField jTextField = new JTextField();
-//        jTextField.setBounds(40, 210, 100, 30);
-//
-//
-//        frame1.add(jTextField);
-        JPanel jPanel = new JPanel();
-//        jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.LINE_AXIS));
-
-//        jPanel.setLayout(new BorderLayout());
-
-        jPanel.setBackground(Color.BLUE);
-
-        JButton b1 = new JButton("B1");
-        b1.addMouseListener(new CustomMouseListener());
-
-        jPanel.add(jLabel, BorderLayout.CENTER);
-
-        JButton b2 = new JButton("B2");
-        b2.addMouseListener(new MouseAdapter() {
+        // menu
+        JMenuItem item1 = new JMenuItem("Open file");
+        JMenuItem item2 = new JMenuItem(new AbstractAction() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                jLabel.setText("Ban da click");
-                System.out.println("Ban da nhan button 2");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                super.mousePressed(e);
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                super.mouseReleased(e);
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-            }
-
-            @Override
-            public void mouseWheelMoved(MouseWheelEvent e) {
-                super.mouseWheelMoved(e);
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                super.mouseDragged(e);
-            }
-
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                super.mouseMoved(e);
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Save file");
             }
         });
-        JButton b3 = new JButton("B3");
-        JButton b4 = new JButton("B4");
-        JButton b5 = new JButton("B5");
-        JButton b6 = new JButton("B6");
+        item2.setText("Save file");
 
-//        jPanel.add(b1, BorderLayout.NORTH);
-//        jPanel.add(b2, BorderLayout.SOUTH);
-//        jPanel.add(b3, BorderLayout.WEST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
-//        jPanel.add(b4, BorderLayout.EAST);
+        JMenu menu = new JMenu("File");
 
-        frame1.add(jPanel);
-        frame1.setSize(320,500);
+        menu.add(item1);
+        menu.add(item2);
+
+        JMenuBar jMenuBar = new JMenuBar();
+
+        jMenuBar.add(menu);
+
+        frame1.setJMenuBar(jMenuBar);
+
+        // list
+        JList<String> jList = new JList<>();
+        jList.setBounds(50, 50, 220, 200);
+
+//        jList.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                super.mouseClicked(e);
+//                // System.out.println("jList.addMouseListener");
+//            }
+//        });
+
+        jList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (e.getValueIsAdjusting()) {
+                    System.out.println(
+                            "Item click: " + jList.getSelectedValue()
+                                    + " e.getValueIsAdjusting() = "
+                                    + e.getValueIsAdjusting());
+                }
+            }
+        });
+
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        listModel.addElement("World");
+        listModel.add(0, "T3H");
+
+        jList.setModel(listModel);
+
+        frame1.add(jList);
+        frame1.setSize(420, 500);
+        frame1.setLayout(null);
     }
 
     public void run() {

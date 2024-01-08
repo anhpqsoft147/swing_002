@@ -41,14 +41,14 @@ public class TutorialFile {
 //        FileInputStream input = null;
 //        try {
 //            input = new FileInputStream(file);
-//            //Trả về số byte ban đầu chưa được đọc trong file
-//            System.out.println(file.length());
-//            System.out.println("Available bytes at the beginning: " + input.available());
-//            input.skip(6);
-//            //Đọc 3 byte từ file
-//            input.read();
-//            input.read();
-//            input.read();
+////            //Trả về số byte ban đầu chưa được đọc trong file
+////            System.out.println(file.length());
+////            System.out.println("Available bytes at the beginning: " + input.available());
+////            input.skip(6);
+////            //Đọc 3 byte từ file
+////            input.read();
+////            input.read();
+////            input.read();
 //            //Trả về số byte chưa được đọc từ file
 //            System.out.println("Available bytes at the end: " + input.available());
 //            input.close();
